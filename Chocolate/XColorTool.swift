@@ -29,7 +29,7 @@ public extension UIColor {
     
     private class func rgbaFromHexCode(hexCode:String) -> (red:CGFloat, green:CGFloat, blue:CGFloat, alpha:CGFloat)? {
         let colorComponent = {(startIndex : Int ,length : Int) -> CGFloat in
-            var subHex = hexCode.substringWithRange(Range<String.Index>(start: hexCode.startIndex.advancedBy(startIndex), end: hexCode.startIndex.advancedBy(startIndex + length)))
+            var subHex = hexCode.substringWithRange(hexCode.startIndex.advancedBy(startIndex)..<hexCode.startIndex.advancedBy(startIndex + length))
             subHex = subHex.characters.count < 2 ? "\(subHex)\(subHex)" : subHex
             var component:UInt32 = 0
             NSScanner(string: subHex).scanHexInt(&component)
