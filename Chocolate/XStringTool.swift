@@ -95,14 +95,14 @@ extension String {
         var length = 0
         var mark = self.isChineseAtIndex(0)
         
-        for var i = 0 ; i <= str.length ; i++ {
-            if self.isChineseAtIndex(i) == mark && i < str.length {
-                length++
+        (0...str.length).forEach {
+            if self.isChineseAtIndex($0) == mark && $0 < str.length {
+                length += 1
             } else {
                 let range = NSMakeRange(starIndex, length)
                 let subString = str.substringWithRange(range) as String
                 splitStrings += [subString]
-                starIndex = i
+                starIndex = $0
                 length = 1
                 mark = !mark
             }
